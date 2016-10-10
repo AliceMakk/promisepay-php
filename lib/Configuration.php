@@ -30,8 +30,10 @@ class Configuration {
                 )
             );
         }
-        
-        define(__NAMESPACE__ . '\API_URL', $this->permittedApiUrls[$environmentType]);
+
+        if (!defined(__NAMESPACE__ . '\API_URL')) {
+            define(__NAMESPACE__ . '\API_URL', $this->permittedApiUrls[$environmentType]);
+        }
     }
     
     /**
@@ -41,7 +43,9 @@ class Configuration {
      * @param string $emailAddress
      */
     public function login($emailAddress) {
-        define(__NAMESPACE__ . '\API_LOGIN', $emailAddress);
+        if (!defined(__NAMESPACE__ . '\API_LOGIN')) {
+            define(__NAMESPACE__ . '\API_LOGIN', $emailAddress);
+        }
     }
     
     /**
@@ -51,6 +55,8 @@ class Configuration {
      * @param string $token
      */
     public function password($token) {
-        define(__NAMESPACE__ . '\API_PASSWORD', $token);
+        if (!defined(__NAMESPACE__ . '\API_PASSWORD')) {
+            define(__NAMESPACE__ . '\API_PASSWORD', $token);
+        }
     }
 }
